@@ -1,0 +1,17 @@
+---
+- name: Install CLI tools via Homebrew
+  community.general.homebrew:
+    name:
+      - ansible-lint
+      - awscli
+      - bat
+      - cli53
+      - dockutil
+      - gh
+      - iftop
+      - mas
+      - sqlite
+      - terraformer
+      - tree
+    state: present
+  tags: cli

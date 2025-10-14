@@ -1,0 +1,16 @@
+---
+- name: Empty downloads folder
+  when: cleanup_downloads | default(false) | bool
+  block:
+    - name: Find all files in Downloads
+      ansible.builtin.find:
+        paths: "{{ ansible_env.HOME }}/Downloads"
+        file_type: file
+      register: files_to_delete
+
+    - name: Delete the files found
+      ansible.builtin.file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ files_to_delete.files }}"
+      tags: cleanup

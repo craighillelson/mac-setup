@@ -1,0 +1,8 @@
+---
+- name: Install Python and Go
+  community.general.homebrew:
+    name:
+      - python
+      - go
+    state: present
+  tags: [languages, dev]

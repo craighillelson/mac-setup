@@ -1,0 +1,17 @@
+---
+- name: Set up Mac
+  hosts: localhost
+  become: false
+  vars:
+    venv_path: "{{ ansible_env.HOME }}/pandas_venv"
+  roles:
+    - os
+    - homebrew
+    - terraform
+    - languages
+    - cli
+    - gui
+    - pandas
+    - app-store
+    - app-configs
+    - cleanup

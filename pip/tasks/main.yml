@@ -1,0 +1,4 @@
+---
+- name: Ensure pip is installed
+  ansible.builtin.command: python3 -m ensurepip --upgrade
+  changed_when: false  # This task always reports as 'ok'

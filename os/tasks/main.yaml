@@ -1,0 +1,57 @@
+---
+# Finder configuration 
+- name: Show hard drive on desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    type: bool
+    value: true
+  notify: Restart Finder
+  tags: [finder, desktop]
+
+- name: Show external hard drives on desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: bool
+    value: true
+  notify: Restart Finder
+  tags: [finder, desktop]
+
+- name: Show removable media on desktop
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowRemovableMediaOnDesktop
+    type: bool
+    value: true
+  notify: Restart Finder
+  tags: [finder, desktop]
+
+# Dock configuration
+- name: Hide the Dock automatically
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  notify: Restart Dock
+  tags: dock
+
+# System appearance
+- name: Set accent color to blue
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleAccentColor
+    type: integer
+    value: 4
+  tags: [appearance]
+
+# File visibility
+- name: Show all file extensions
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+  notify: Restart Finder
+  tags: [finder, files]

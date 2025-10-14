@@ -1,0 +1,22 @@
+---
+- name: Create virtual environment
+  ansible.builtin.command: /opt/homebrew/bin/python3 -m venv {{ venv_path }}
+  args:
+    creates: "{{ venv_path }}"
+  tags: [pandas, python, dev]
+
+- name: Install pandas in virtual environment
+  ansible.builtin.pip:
+    name: pandas
+    virtualenv: "{{ venv_path }}"
+    state: present
+  register: pandas_install
+  tags: [pandas, python, dev]
+
+- name: Display information about the installation
+  ansible.builtin.debug:
+    msg: >
+      Pandas has been installed in a virtual environment at {{ venv_path }}.
+      To use it, activate the environment with 'source {{ venv_path }}/bin/activate'
+  when: pandas_install.changed
+  tags: [pandas, python, dev]
