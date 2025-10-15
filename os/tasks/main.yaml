@@ -44,7 +44,7 @@
     key: AppleAccentColor
     type: integer
     value: 4
-  tags: [appearance]
+  tags: appearance
 
 # Filesystem preferences
 - name: Show all file extensions
