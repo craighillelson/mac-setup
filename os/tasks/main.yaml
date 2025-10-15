@@ -46,7 +46,7 @@
     value: 4
   tags: [appearance]
 
-# File visibility
+# Filesystem preferences
 - name: Show all file extensions
   community.general.osx_defaults:
     domain: com.apple.finder
@@ -55,3 +55,11 @@
     value: true
   notify: Restart Finder
   tags: [finder, files]
+
+- name: Save screenshots to Downloads
+  community.general.osx_defaults:
+    domain: com.apple.screencapture
+    key: location
+    type: string
+    value: "{{ ansible_env.HOME }}/Downloads"
+  tags: [files, screenshots]
