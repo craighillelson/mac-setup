@@ -1,0 +1,22 @@
+---
+- name: Create virtual environment for AWS tools
+  ansible.builtin.command: /opt/homebrew/bin/python3 -m venv {{ aws_venv_path }}
+  args:
+    creates: "{{ aws_venv_path }}"
+  tags: [aws, python, dev]
+
+- name: Install boto3 in virtual environment
+  ansible.builtin.pip:
+    name: boto3
+    virtualenv: "{{ aws_venv_path }}"
+    state: present
+  register: boto3_install
+  tags: [aws, python, dev]
+
+- name: Display information about the installation
+  ansible.builtin.debug:
+    msg: >
+      boto3 has been installed in a virtual environment at {{ aws_venv_path }}.
+      To use it, activate the environment with 'source {{ aws_venv_path }}/bin/activate'
+  when: boto3_install.changed
+  tags: [aws, python, dev]

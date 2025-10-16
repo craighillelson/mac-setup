@@ -4,6 +4,7 @@
   become: false
   vars:
     venv_path: "{{ ansible_env.HOME }}/pandas_venv"
+    aws_venv_path: "{{ ansible_env.HOME }}/aws_venv"
   roles:
     - os
     - homebrew
@@ -12,6 +13,7 @@
     - cli
     - gui
     - pandas
+    - aws-tools
     - app-store
     - app-configs
     - cleanup
