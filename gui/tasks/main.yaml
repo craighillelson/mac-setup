@@ -2,6 +2,7 @@
 - name: Install GUI applications via Homebrew casks
   community.general.homebrew_cask:
     name:
+      - claude
       - discord
       - docker
       - firefox
