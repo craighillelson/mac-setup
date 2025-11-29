@@ -2,17 +2,11 @@
 - name: Copy master gitconfig file
   ansible.builtin.copy:
     src: "master.gitconfig"
-    # dest: "{{ ansible_env.HOME }}/.gitconfig"
-    # owner: "{{ ansible_user_id }}"
-    # group: "{{ ansible_user_gid }}"
-    # dest: "{{ ansible_facts['HOME'] }}/.gitconfig"
-    # owner: "{{ ansible_facts['user_id'] }}"
-    # group: "{{ ansible_facts['user_gid'] }}"
     dest: "{{ ansible_facts['env']['HOME'] }}/.gitconfig"
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
     mode: '0644'
-    backup: true
+    backup: True
   tags: [configs, dotfiles, git]
 
 - name: Copy zshrc
@@ -22,7 +16,7 @@
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
     mode: '0644'
-    backup: true
+    backup: True
   tags: [configs, dotfiles, shell]
 
 - name: Copy VS Code keybindings
@@ -32,5 +26,5 @@
     owner: "{{ ansible_facts['user_id'] }}"
     group: "{{ ansible_facts['user_gid'] }}"
     mode: '0644'
-    backup: true
+    backup: True
   tags: [configs, vscode]
