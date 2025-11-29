@@ -1,7 +1,0 @@
----
-# Find app IDs by running: mas search "app name"
-- name: Install Mac App Store applications
-  community.general.mas:
-    id: 431748264 # Pluralsight
-    state: present
-  tags: [app-store, apps]
