@@ -5,7 +5,7 @@
     domain: com.apple.finder
     key: ShowHardDrivesOnDesktop
     type: bool
-    value: true
+    value: True
   notify: Restart Finder
   tags: [finder, desktop]
 
@@ -14,7 +14,7 @@
     domain: com.apple.finder
     key: ShowExternalHardDrivesOnDesktop
     type: bool
-    value: true
+    value: True
   notify: Restart Finder
   tags: [finder, desktop]
 
@@ -23,7 +23,7 @@
     domain: com.apple.finder
     key: ShowRemovableMediaOnDesktop
     type: bool
-    value: true
+    value: True
   notify: Restart Finder
   tags: [finder, desktop]
 
@@ -33,7 +33,7 @@
     domain: com.apple.dock
     key: autohide
     type: bool
-    value: true
+    value: True
   notify: Restart Dock
   tags: dock
 
@@ -52,7 +52,7 @@
     domain: com.apple.finder
     key: AppleShowAllExtensions
     type: bool
-    value: true
+    value: True
   notify: Restart Finder
   tags: [finder, files]
 
@@ -61,5 +61,6 @@
     domain: com.apple.screencapture
     key: location
     type: string
-    value: "{{ ansible_env.HOME }}/Downloads"
+    # value: "{{ ansible_env.HOME }}/Downloads"
+    value: "{{ ansible_facts['env']['HOME'] }}/Downloads"
   tags: [files, screenshots]

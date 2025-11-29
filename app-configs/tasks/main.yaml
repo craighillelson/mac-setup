@@ -2,29 +2,35 @@
 - name: Copy master gitconfig file
   ansible.builtin.copy:
     src: "master.gitconfig"
-    dest: "{{ ansible_env.HOME }}/.gitconfig"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_gid }}"
+    # dest: "{{ ansible_env.HOME }}/.gitconfig"
+    # owner: "{{ ansible_user_id }}"
+    # group: "{{ ansible_user_gid }}"
+    # dest: "{{ ansible_facts['HOME'] }}/.gitconfig"
+    # owner: "{{ ansible_facts['user_id'] }}"
+    # group: "{{ ansible_facts['user_gid'] }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.gitconfig"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: '0644'
-    backup: yes
+    backup: true
   tags: [configs, dotfiles, git]
 
 - name: Copy zshrc
   ansible.builtin.copy:
     src: "master.zshrc"
-    dest: "{{ ansible_env.HOME }}/.zshrc"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_gid }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: '0644'
-    backup: yes
+    backup: true
   tags: [configs, dotfiles, shell]
 
 - name: Copy VS Code keybindings
   ansible.builtin.copy:
     src: "keybindings.json"
-    dest: "{{ ansible_env.HOME }}/Library/Application Support/Code/User/keybindings.json"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_gid }}"
+    dest: "{{ ansible_facts['env']['HOME'] }}/Library/Application Support/Code/User/keybindings.json"
+    owner: "{{ ansible_facts['user_id'] }}"
+    group: "{{ ansible_facts['user_gid'] }}"
     mode: '0644'
-    backup: yes
+    backup: true
   tags: [configs, vscode]

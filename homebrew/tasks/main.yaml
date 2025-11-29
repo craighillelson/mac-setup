@@ -3,7 +3,9 @@
   ansible.builtin.shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   args:
     creates: /opt/homebrew/bin/brew
-  when: ansible_architecture == "arm64"
+  # when: ansible_architecture == "arm64"
+  # when: ansible_facts["fact_name"] == "arm64"
+  when: ansible_facts['architecture'] == "arm64"
 
 - name: Update Homebrew
   community.general.homebrew:

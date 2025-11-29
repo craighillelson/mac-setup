@@ -1,10 +1,10 @@
----
+
 - name: Set up Mac
   hosts: localhost
-  become: false
+  become: False
   vars:
-    venv_path: "{{ ansible_env.HOME }}/pandas_venv"
-    aws_venv_path: "{{ ansible_env.HOME }}/aws_venv"
+    venv_path: "{{ ansible_facts['env']['HOME'] }}/pandas_venv"
+    aws_venv_path: "{{ ansible_facts['env']['HOME'] }}/aws_venv"
   roles:
     - os
     - homebrew
@@ -14,6 +14,6 @@
     - gui
     - pandas
     - aws-tools
-    - app-store
+    # - app-store
     - app-configs
     - cleanup
